@@ -5,12 +5,14 @@ import cookieParser from 'cookie-parser';
 
 import logger from 'morgan';
 
-import indexRouter from './routes/index';
-import usersRouter from './routes/users';
+import ApiRouter from './routes/index';
 
 const app = express();
 // eslint-disable-next-line no-underscore-dangle
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
+const STATIC = path.resolve(__dirname, '../dist');
+const INDEX = path.resolve(STATIC, 'index.html');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,10 +22,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(STATIC));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api', ApiRouter);
+// All GET request handled by INDEX file
+app.get('*', (req, res) => {
+  res.sendFile(INDEX);
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
