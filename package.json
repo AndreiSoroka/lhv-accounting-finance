@@ -20,7 +20,14 @@
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
     "vue-apexcharts": "^1.3.5",
-    "vue-moment": "^4.0.0"
+    "vue-moment": "^4.0.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "dotenv": "^7.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",
@@ -39,14 +46,7 @@
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-bootstrap-vue": "^0.4.0",
     "vue-cli-plugin-moment": "^0.1.1",
-    "vue-template-compiler": "^2.5.21",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1",
-    "dotenv": "^7.0.0"
+    "vue-template-compiler": "^2.5.21"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
