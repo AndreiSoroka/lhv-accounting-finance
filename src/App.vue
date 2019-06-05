@@ -2,7 +2,7 @@
   <b-container>
     <b-row>
       <b-col>
-        <form-data @data="csvData = arguments[0]"/>
+        <load-files @data="csvData = arguments[0]"/>
       </b-col>
     </b-row>
     <b-row
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import FormData from './components/FormData.vue';
+import LoadFiles from './components/LoadFiles.vue';
 import ChartData from './components/ChartData.vue';
 import TableData from './components/TableData.vue';
 import costCalculation from './costCalculation';
@@ -26,7 +26,7 @@ import costCalculation from './costCalculation';
 export default {
   name: 'App',
   components: {
-    FormData,
+    LoadFiles,
     ChartData,
     TableData,
   },
@@ -41,12 +41,7 @@ export default {
         return [];
       }
       return this.csvData
-        .split(/\r\n|\r|\n/)
-        .map((row) => {
-          const formatting = row.split(/\t/);
-          // todo
-          return [formatting[2], formatting[4], +formatting[8]];
-        });
+        .map(formatting => [formatting[2], formatting[4], +formatting[8]]);
     },
     costCalculation() {
       if (!this.formattingData.length) {

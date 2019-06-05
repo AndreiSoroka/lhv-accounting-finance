@@ -17,6 +17,7 @@
     "bootstrap-vue": "^2.0.0-rc.19",
     "cookie-parser": "~1.4.4",
     "core-js": "^2.6.5",
+    "csv-parse": "^4.4.3",
     "debug": "~2.6.9",
     "dotenv": "^7.0.0",
     "ejs": "~2.6.1",
