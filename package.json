@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node --experimental-modules -r dotenv/config ./server/bin/www.mjs",
+    "start": "node --experimental-modules -r dotenv/config srv/bin/www.mjs",
     "start:debug": "DEBUG=server:* npm start",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

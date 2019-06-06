@@ -1,14 +1,16 @@
 <template>
   <div>
-    <div v-if="isSupportFileAPI">
-      <b-form-file multiple
-                   v-model="files"
-                   accept=".csv"/>
+    <div v-if="isSupportFileAPI" class="load-files">
+      <b-form-file
+        multiple
+        v-model="files"
+        accept=".csv"/>
     </div>
-    <b-form-textarea v-else
-                     v-model="csvData"
-                     placeholder="CSV file data from LHV export"
-                     rows="8"
+    <b-form-textarea
+      v-else
+      v-model="csvData"
+      placeholder="CSV file data from LHV export"
+      rows="8"
     />
   </div>
 </template>
@@ -31,6 +33,10 @@ export default {
       this.$emit('data', this.parseFromCsv(this.csvData));
     },
     async files(data) {
+      if (!data.length) {
+        this.$emit('input', null);
+      }
+
       let result = [];
 
       const files = data.map(file => this.readFileSync(file));
@@ -44,7 +50,7 @@ export default {
 
       result.map(transaction => [transaction[2], transaction[4], +transaction[8]]);
 
-      this.$emit('data', result);
+      this.$emit('input', result);
     },
   },
   methods: {
@@ -88,4 +94,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .load-files {
+    margin: 3rem 0;
+  }
 </style>
